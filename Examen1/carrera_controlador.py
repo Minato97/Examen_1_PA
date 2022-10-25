@@ -9,27 +9,15 @@ def registrarCarreras(clave,nombre):
         flag = False
         for carr in carreras:
             if carr.getClaveCarrera() == clave:
-                print("La clave {} ya existe, introduce una distinto".format(clave))
-                os.system("pause")
-                os.system("cls")
-                flag = True
-                pass
+                return "La clave {} ya existe, introduce una distinto".format(clave)
         if flag == False:
             carrera = Carrera(clave,nombre)
             carreras.append(carrera)
-            os.system("cls")
-            print("Carrera registrada correctamente")
-            os.system("pause")
-            os.system("cls")
-            pass
+            return "Carrera registrada correctamente"
     else:
         carrera = Carrera(clave,nombre)
         carreras.append(carrera)
-        os.system("cls")
-        print("Carrera registrada correctamente")
-        os.system("pause")
-        os.system("cls")
-        pass
+        return "Carrera registrada correctamente"
 
 def listarCarreras():
     if len(carreras) == 0:

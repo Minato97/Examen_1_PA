@@ -1,6 +1,4 @@
-from doctest import ELLIPSIS_MARKER
-from email.mime import application
-from tkinter import N
+
 from PyQt5 import QtWidgets
 from carrera_controlador import *
 from interfaz import Ui_MainWindow
@@ -20,26 +18,25 @@ class Sistema(QtWidgets.QMainWindow):
         '''
         inicializarGUI inicializa la interfaz gráfica del usuario
         '''
-        self.ui.btn_Registrar.setEnabled(False)
-        self.ui.btn_Registrar.setToolTip("Analizar la información")
+        self.ui.btn_registrar.setEnabled(False)
+        self.ui.btn_registrar.setToolTip("Analizar la información")
         int_validator = QIntValidator()
         self.ui.claveCarrera.setValidator(int_validator)
         self.ui.nombreCarrera.textChanged.connect(self.habilitarBtnRegistrar)
         self.ui.claveCarrera.textChanged.connect(self.habilitarBtnRegistrar)
-        self.ui.btn_Registrar.clicked.connect(self.prueba)
+        self.ui.btn_registrar.clicked.connect(self.prueba)
         
     def habilitarBtnRegistrar(self):
         if len(self.ui.nombreCarrera.text())>0 and len(self.ui.claveCarrera.text())>0:
-            self.ui.btn_Registrar.setEnabled(True)
+            self.ui.btn_registrar.setEnabled(True)
         else:
-            self.ui.btn_Registrar.setEnabled(False)
+            self.ui.btn_registrar.setEnabled(False)
             # self.ui.lblResultado.setText("")
 
     def prueba(self):
         clave = self.ui.claveCarrera.text()
         nombre = self.ui.nombreCarrera.text()
-        
-        registrarCarreras(clave,nombre)
+        self.ui.mensaje.setText(registrarCarreras(clave,nombre))
         
     # def showUsers():
     #     registredUsers = DB.database.select_all_users()
