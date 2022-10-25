@@ -114,7 +114,7 @@
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <attribute name="horizontalHeaderVisible">
-       <bool>false</bool>
+       <bool>true</bool>
       </attribute>
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>false</bool>
@@ -157,8 +157,8 @@
        <rect>
         <x>40</x>
         <y>200</y>
-        <width>411</width>
-        <height>21</height>
+        <width>431</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
