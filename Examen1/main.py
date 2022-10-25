@@ -24,7 +24,8 @@ class Sistema(QtWidgets.QMainWindow):
         self.ui.claveCarrera.setValidator(int_validator)
         self.ui.nombreCarrera.textChanged.connect(self.habilitarBtnRegistrar)
         self.ui.claveCarrera.textChanged.connect(self.habilitarBtnRegistrar)
-        self.ui.btn_registrar.clicked.connect(self.prueba)
+        self.ui.btn_registrar.clicked.connect(self.btnRegistrar)
+
         
     def habilitarBtnRegistrar(self):
         if len(self.ui.nombreCarrera.text())>0 and len(self.ui.claveCarrera.text())>0:
@@ -33,23 +34,25 @@ class Sistema(QtWidgets.QMainWindow):
             self.ui.btn_registrar.setEnabled(False)
             # self.ui.lblResultado.setText("")
 
-    def prueba(self):
+    def btnRegistrar(self):
         clave = self.ui.claveCarrera.text()
         nombre = self.ui.nombreCarrera.text()
         self.ui.mensaje.setText(registrarCarreras(clave,nombre))
+        self.mostrarCarreras()
         
-    # def showUsers():
-    #     registredUsers = DB.database.select_all_users()
-    #     loginAdmin.userTable.clear()
-    #     row = 0
-    #     for user in registredUsers:
-    #             column = 0
-    #             loginAdmin.userTable.insertRow(row)
-    #             for element in user:
-    #                     cell = QtWidgets.QTableWidgetItem(element)
-    #                     loginAdmin.userTable.setItem(row, column, cell)
-    #                     column +=1
-    #             row +=1
+    def mostrarCarreras(self):
+        self.ui.tableWidget.clearContents()
+        row = 0
+        for carrera in carreras:
+            column = 0
+            self.ui.tableWidget.removeRow(row)
+            self.ui.tableWidget.insertRow(row)
+            cell = QtWidgets.QTableWidgetItem(carrera.getClaveCarrera())
+            self.ui.tableWidget.setItem(row, column, cell)
+            column +=1
+            cell = QtWidgets.QTableWidgetItem(carrera.getCarrera())
+            self.ui.tableWidget.setItem(row, column, cell)
+            row +=1
 
 aplicacion = QtWidgets.QApplication([])
 mi_sistema = Sistema()
