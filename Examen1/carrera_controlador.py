@@ -1,28 +1,21 @@
 
 from carrera_modelo import *
 from alumno_modelo import *
-from datetime import date
 
 import os
 
-def registrarCarreras():
-    while True:
-        try:
-            nombre_carrera = (input("Introduce el nombre de la carrera:"))
-            break
-        except ValueError:
-            print ("Ingrese> ")
+def registrarCarreras(clave,nombre):      
     if len(carreras) != 0:
         flag = False
         for carr in carreras:
-            if carr.getCarrera() == nombre_carrera:
-                print("El nombre {} ya existe, introduce uno distinto".format(nombre_carrera))
+            if carr.getClaveCarrera() == clave:
+                print("La clave {} ya existe, introduce una distinto".format(clave))
                 os.system("pause")
                 os.system("cls")
                 flag = True
                 pass
         if flag == False:
-            carrera = Carrera(nombre_carrera)
+            carrera = Carrera(clave,nombre)
             carreras.append(carrera)
             os.system("cls")
             print("Carrera registrada correctamente")
@@ -30,7 +23,7 @@ def registrarCarreras():
             os.system("cls")
             pass
     else:
-        carrera = Carrera(nombre_carrera)
+        carrera = Carrera(clave,nombre)
         carreras.append(carrera)
         os.system("cls")
         print("Carrera registrada correctamente")

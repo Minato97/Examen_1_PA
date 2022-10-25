@@ -26,7 +26,7 @@ class Sistema(QtWidgets.QMainWindow):
         self.ui.claveCarrera.setValidator(int_validator)
         self.ui.nombreCarrera.textChanged.connect(self.habilitarBtnRegistrar)
         self.ui.claveCarrera.textChanged.connect(self.habilitarBtnRegistrar)
-        # self.ui.btn_registrar.clicked.connect(self.registrarCarrera)
+        self.ui.btn_Registrar.clicked.connect(self.prueba)
         
     def habilitarBtnRegistrar(self):
         if len(self.ui.nombreCarrera.text())>0 and len(self.ui.claveCarrera.text())>0:
@@ -34,6 +34,25 @@ class Sistema(QtWidgets.QMainWindow):
         else:
             self.ui.btn_Registrar.setEnabled(False)
             # self.ui.lblResultado.setText("")
+
+    def prueba(self):
+        clave = self.ui.claveCarrera.text()
+        nombre = self.ui.nombreCarrera.text()
+        
+        registrarCarreras(clave,nombre)
+        
+    # def showUsers():
+    #     registredUsers = DB.database.select_all_users()
+    #     loginAdmin.userTable.clear()
+    #     row = 0
+    #     for user in registredUsers:
+    #             column = 0
+    #             loginAdmin.userTable.insertRow(row)
+    #             for element in user:
+    #                     cell = QtWidgets.QTableWidgetItem(element)
+    #                     loginAdmin.userTable.setItem(row, column, cell)
+    #                     column +=1
+    #             row +=1
 
 aplicacion = QtWidgets.QApplication([])
 mi_sistema = Sistema()

@@ -1,29 +1,30 @@
 
 carreras = list()
 class Carrera:
-    # __nombre = None
-    # __materias = None
+    
 
-    def __init__(self,carrera):
-        self.__nombre = carrera
+    def __init__(self,clave,nombre):
+        self.__nombre = nombre
         self.__alumnos = list()
-        self.__ClaveCarrera = list()
+        self.__ClaveCarrera = clave
 
     def getCarrera(self):
         return self.__nombre
 
+    def getClaveCarrera(self):
+        return self.__ClaveCarrera
 
     def getAlumnosC(self):
         return self.__alumnos
+    
+    def setClaveCarrera(self, clave):
+        self.__ClaveCarrera = clave
 
     def setAlumnosC(self,alumno):
         self.__alumnos.append(alumno)
 
     def setNombre(self,nombre):
         self.__nombre = nombre
-
-    # def addMateria(self,materia):
-    #     self.__materias.append(materia)
 
     def listarAlumnosC(self, carrera):
         print("""      Los alumnos registradas a la carrera son: """)
