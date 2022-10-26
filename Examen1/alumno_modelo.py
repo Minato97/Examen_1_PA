@@ -1,6 +1,6 @@
 class Alumno:
 
-    def __init__(self, matricula, nombre, genero):
+    def __init__(self):
         self.__matricula = matricula
         self.__nombre = nombre
         self.__genero = genero

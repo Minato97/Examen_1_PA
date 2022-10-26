@@ -19,7 +19,7 @@ class Sistema(QtWidgets.QMainWindow):
         inicializarGUI inicializa la interfaz gráfica del usuario
         '''
         self.ui.btn_registrar.setEnabled(False)
-        self.ui.btn_registrar.setToolTip("Analizar la información")
+        self.ui.btn_registrar.setToolTip("Registrar Carrera")
         int_validator = QIntValidator()
         self.ui.claveCarrera.setValidator(int_validator)
         self.ui.nombreCarrera.textChanged.connect(self.habilitarBtnRegistrar)
@@ -38,25 +38,52 @@ class Sistema(QtWidgets.QMainWindow):
         else: 
             self.ui.A_btnRegistrar.setEnabled(False)
     
-    def AddItem_Carrera(self):
+    def AddItem_Carrera(self,nombre_carrera):
         for carrera in carreras:
-            self.ui.A_carrera.addItem(carrera.getCarrera())
+            if carrera.getCarrera() == nombre_carrera:
+                self.ui.A_carrera.addItem(carrera.getCarrera())
+                self.ui.C_carrera_Carrera.addItem(carrera.getCarrera())
         
     def habilitarBtnRegistrar(self):
         if len(self.ui.nombreCarrera.text())>0 and len(self.ui.claveCarrera.text()) > 0:
             self.ui.btn_registrar.setEnabled(True)
         else:
             self.ui.btn_registrar.setEnabled(False)
-            # self.ui.lblResultado.setText("")
+            self.ui.mensaje.setText("")
 
     def btnRegistrar(self):
         clave = self.ui.claveCarrera.text()
         nombre = self.ui.nombreCarrera.text()
-        self.ui.mensaje.setText(registrarCarreras(clave,nombre))
-        self.mostrarCarreras()
+        flag, retorno = registrarCarreras(clave,nombre)
+        if flag == True:
+            self.ui.mensaje.setText("La clave {} ya existe, introduce una distinto".format(retorno))
+        else:
+            self.ui.mensaje.setText("Carrera registrada correctamente")
+            self.AddItem_Carrera(retorno)
+            self.mostrarCarreras()
         
     def A_btnRegistrar(self):
-        pass
+        clave = self.ui.A_noControl.text()
+        nombre = self.ui.A_nombreAlumno.text()
+        genero = self.ui.A_genero.currenttext()
+        carrera = self.ui.A_carrera.currenttext()
+        registrarAlumnosCarrera(clave,nombre,genero,carrera)
+        self.mostrarAlumnos()
+
+    def mostrarAlumnos(self):
+        self.ui.A_tabla.clearContents()
+        row = 0
+        for carrera in carreras:
+            column = 0
+            self.ui.tableWidget.removeRow(row)
+            self.ui.tableWidget.insertRow(row)
+            cell = QtWidgets.QTableWidgetItem(carrera.getClaveCarrera())
+            self.ui.tableWidget.setItem(row, column, cell)
+            column += 1
+            cell = QtWidgets.QTableWidgetItem(carrera.getCarrera())
+            self.ui.tableWidget.setItem(row, column, cell)
+            row += 1
+
         
         
     def mostrarCarreras(self):
