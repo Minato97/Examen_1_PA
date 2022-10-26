@@ -42,7 +42,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Carreras">
      <attribute name="title">
@@ -114,7 +114,7 @@
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <attribute name="horizontalHeaderVisible">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>false</bool>
@@ -484,6 +484,11 @@
          <height>31</height>
         </rect>
        </property>
+       <item>
+        <property name="text">
+         <string>Seleccionar Carrera</string>
+        </property>
+       </item>
       </widget>
       <widget class="QPushButton" name="C_btnBuscar_Carrera">
        <property name="geometry">

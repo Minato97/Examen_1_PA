@@ -1,9 +1,9 @@
 class Alumno:
 
     def __init__(self):
-        self.__matricula = matricula
-        self.__nombre = nombre
-        self.__genero = genero
+        self.__matricula = int
+        self.__nombre = str
+        self.__genero = str
 
     def getMatricula(self):
         return self.__matricula
