@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, item)
-        self.tableWidget.horizontalHeader().setVisible(False)
+        self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(250)
         self.tableWidget.horizontalHeader().setHighlightSections(True)
@@ -92,8 +92,8 @@ class Ui_MainWindow(object):
         self.A_genero.addItem("")
         self.A_carrera = QtWidgets.QComboBox(self.Alumnos)
         self.A_carrera.setGeometry(QtCore.QRect(140, 210, 191, 31))
-        self.A_carrera.setCurrentText("")
         self.A_carrera.setObjectName("A_carrera")
+        self.A_carrera.addItem("")
         self.A_tabla = QtWidgets.QTableWidget(self.Alumnos)
         self.A_tabla.setGeometry(QtCore.QRect(20, 270, 1021, 341))
         self.A_tabla.setObjectName("A_tabla")
@@ -185,7 +185,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -208,6 +208,8 @@ class Ui_MainWindow(object):
         self.A_genero.setItemText(1, _translate("MainWindow", "Masculino"))
         self.A_genero.setItemText(2, _translate("MainWindow", "Femenino"))
         self.A_genero.setItemText(3, _translate("MainWindow", "Sin especificar"))
+        self.A_carrera.setCurrentText(_translate("MainWindow", "--- Seleccione ---"))
+        self.A_carrera.setItemText(0, _translate("MainWindow", "--- Seleccione ---"))
         item = self.A_tabla.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "No. de control"))
         item = self.A_tabla.horizontalHeaderItem(1)
@@ -241,13 +243,3 @@ class Ui_MainWindow(object):
         item = self.C_tabla_Carrera.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Carrera"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Consultar"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())

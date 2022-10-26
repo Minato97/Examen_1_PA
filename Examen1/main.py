@@ -19,6 +19,7 @@ class Sistema(QtWidgets.QMainWindow):
         inicializarGUI inicializa la interfaz gráfica del usuario
         '''
         self.ui.btn_registrar.setEnabled(False)
+        self.ui.A_btnRegistrar.setEnabled(False)
         self.ui.btn_registrar.setToolTip("Registrar Carrera")
         int_validator = QIntValidator()
         self.ui.claveCarrera.setValidator(int_validator)
@@ -61,6 +62,8 @@ class Sistema(QtWidgets.QMainWindow):
             self.ui.mensaje.setText("Carrera registrada correctamente")
             self.AddItem_Carrera(retorno)
             self.mostrarCarreras()
+            self.ui.claveCarrera.clear()
+            self.ui.nombreCarrera.clear()
         
     def A_btnRegistrar(self):
         clave = self.ui.A_noControl.text()
@@ -69,23 +72,32 @@ class Sistema(QtWidgets.QMainWindow):
         carrera = self.ui.A_carrera.currenttext()
         registrarAlumnosCarrera(clave,nombre,genero,carrera)
         self.mostrarAlumnos()
+        self.ui.A_noControl.clear()
+        self.ui.A_nombreAlumno.clear()
+        # self.ui.A_genero.currenttext()
+        # self.ui.A_carrera.currenttext()
 
     def mostrarAlumnos(self):
         self.ui.A_tabla.clearContents()
         row = 0
         for carrera in carreras:
-            column = 0
-            self.ui.tableWidget.removeRow(row)
-            self.ui.tableWidget.insertRow(row)
-            cell = QtWidgets.QTableWidgetItem(carrera.getClaveCarrera())
-            self.ui.tableWidget.setItem(row, column, cell)
-            column += 1
-            cell = QtWidgets.QTableWidgetItem(carrera.getCarrera())
-            self.ui.tableWidget.setItem(row, column, cell)
-            row += 1
+            for alumno in carrera.getAlumnosC():
+                column = 0
+                self.ui.A_tabla.removeRow(row)
+                self.ui.A_tabla.insertRow(row)
+                cell = QtWidgets.QTableWidgetItem(alumno.getMatricula())
+                self.ui.A_tabla.setItem(row, column, cell)
+                column += 1
+                cell = QtWidgets.QTableWidgetItem(alumno.getAlumno())
+                self.ui.A_tabla.setItem(row, column, cell)
+                column += 1
+                cell = QtWidgets.QTableWidgetItem(alumno.getGenero())
+                self.ui.A_tabla.setItem(row, column, cell)
+                column += 1
+                cell = QtWidgets.QTableWidgetItem(carrera.getCarrera())
+                self.ui.A_tabla.setItem(row, column, cell)
+                row += 1
 
-        
-        
     def mostrarCarreras(self):
         self.ui.tableWidget.clearContents()
         row = 0

@@ -34,6 +34,7 @@ def registrarAlumnosCarrera(clave,nombre,genero,carrera):
     alumno.setNombre(nombre)
     alumno.setGenero(genero)
     carrera.setAlumnosC(alumno)
+    print(carrera.getAlumnosC())
     return "Alumno registrado correctamente"
 
 
