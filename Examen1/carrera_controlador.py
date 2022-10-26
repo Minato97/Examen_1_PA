@@ -2,7 +2,6 @@
 from carrera_modelo import *
 from alumno_modelo import *
 
-import os
 
 def registrarCarreras(clave,nombre):      
     if len(carreras) != 0:
@@ -19,14 +18,6 @@ def registrarCarreras(clave,nombre):
         carreras.append(carrera)
         return False, nombre
 
-# def listarCarreras():
-#     if len(carreras) >=1:
-#        # print("No se tienen carreras registradas")
-#     # else:
-#     #     os.system("cls")
-#         # print("""      Las carreras existentes son: """)
-#         for carr in carreras:
-#             print(carr.getCarrera())
 
 def registrarAlumnosCarrera(clave,nombre,genero,carrera):
     alumno = Alumno()
@@ -34,9 +25,7 @@ def registrarAlumnosCarrera(clave,nombre,genero,carrera):
     alumno.setNombre(nombre)
     alumno.setGenero(genero)
     carrera.setAlumnosC(alumno)
-    print(carrera.getAlumnosC())
     return "Alumno registrado correctamente"
-
 
 
 def listarAlumnosCarrera():

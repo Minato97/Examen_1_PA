@@ -1,5 +1,3 @@
-from carrera_modelo import *
-from alumno_modelo import *
 from carrera_controlador import *
 
 def buscarAlumno(clave):
