@@ -20,20 +20,13 @@ def registrarCarreras(clave,nombre):
         return "Carrera registrada correctamente"
 
 def listarCarreras():
-    if len(carreras) == 0:
-        os.system("cls")
-        print("No se tienen carreras registradas")
-        os.system("pause")
-        os.system("cls")
-        pass
-    else:
-        os.system("cls")
-        print("""      Las carreras existentes son: """)
+    if len(carreras) >=1:
+       # print("No se tienen carreras registradas")
+    # else:
+    #     os.system("cls")
+        # print("""      Las carreras existentes son: """)
         for carr in carreras:
             print(carr.getCarrera())
-        os.system("pause")
-        os.system("cls")
-        pass
 
 def registrarAlumnosCarrera():
     nombre_carrera = input("Introduce el nombre de la carrera: ")
@@ -67,4 +60,4 @@ def listarAlumnosCarrera():
             print("El nombre de la carrera no fue encontrada.")
             os.system("pause")
             os.system("cls")
-            pass
+            pass 

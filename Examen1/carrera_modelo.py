@@ -2,7 +2,6 @@
 carreras = list()
 class Carrera:
     
-
     def __init__(self,clave,nombre):
         self.__nombre = nombre
         self.__alumnos = list()

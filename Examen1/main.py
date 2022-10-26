@@ -24,11 +24,26 @@ class Sistema(QtWidgets.QMainWindow):
         self.ui.claveCarrera.setValidator(int_validator)
         self.ui.nombreCarrera.textChanged.connect(self.habilitarBtnRegistrar)
         self.ui.claveCarrera.textChanged.connect(self.habilitarBtnRegistrar)
+        self.ui.A_noControl.setValidator(int_validator)
+        self.ui.A_noControl.textChanged.connect(self.habilitarBtn_ARegistrar)
+        self.ui.A_nombreAlumno.textChanged.connect(self.habilitarBtn_ARegistrar)
+        self.ui.A_carrera.textActivated.connect(self.habilitarBtn_ARegistrar)
+        self.ui.A_genero.textActivated.connect(self.habilitarBtn_ARegistrar)
         self.ui.btn_registrar.clicked.connect(self.btnRegistrar)
+        self.ui.A_btnRegistrar.clicked.connect(self.A_btnRegistrar)
 
+    def habilitarBtn_ARegistrar(self):
+        if len(self.ui.A_noControl.text())>0 and len(self.ui.A_nombreAlumno.text())>0 and self.ui.A_genero.currentIndex()>0 and self.ui.A_carrera.currentIndex()>0:
+            self.ui.A_btnRegistrar.setEnabled(True)
+        else: 
+            self.ui.A_btnRegistrar.setEnabled(False)
+    
+    def AddItem_Carrera(self):
+        for carrera in carreras:
+            self.ui.A_carrera.addItem(carrera.getCarrera())
         
     def habilitarBtnRegistrar(self):
-        if len(self.ui.nombreCarrera.text())>0 and len(self.ui.claveCarrera.text())>0:
+        if len(self.ui.nombreCarrera.text())>0 and len(self.ui.claveCarrera.text()) > 0:
             self.ui.btn_registrar.setEnabled(True)
         else:
             self.ui.btn_registrar.setEnabled(False)
@@ -39,6 +54,10 @@ class Sistema(QtWidgets.QMainWindow):
         nombre = self.ui.nombreCarrera.text()
         self.ui.mensaje.setText(registrarCarreras(clave,nombre))
         self.mostrarCarreras()
+        
+    def A_btnRegistrar(self):
+        pass
+        
         
     def mostrarCarreras(self):
         self.ui.tableWidget.clearContents()

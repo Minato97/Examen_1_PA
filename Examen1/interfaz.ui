@@ -42,7 +42,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Carreras">
      <attribute name="title">
@@ -114,7 +114,7 @@
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <attribute name="horizontalHeaderVisible">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>false</bool>
@@ -206,7 +206,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Carrera: </string>
+       <string>Genero:</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_6">
@@ -219,7 +219,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Semestre:</string>
+       <string>Carerra:</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="A_noControl">
@@ -242,7 +242,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QComboBox" name="A_carrera">
+     <widget class="QComboBox" name="A_genero">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -251,8 +251,28 @@
         <height>31</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>--- Seleccione ---</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Masculino</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Femenino</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Sin especificar</string>
+       </property>
+      </item>
      </widget>
-     <widget class="QComboBox" name="A_semestre">
+     <widget class="QComboBox" name="A_carrera">
       <property name="geometry">
        <rect>
         <x>140</x>
